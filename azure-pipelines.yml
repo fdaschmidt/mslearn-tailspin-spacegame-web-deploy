@@ -40,11 +40,11 @@ stages:
       displayName: 'Write build info'
       workingDirectory: $(wwwrootDir)
 
-    - task: DotNetCoreCLI@2
-      displayName: 'Restore project dependencies'
+    - task: NuGetCommand@2
       inputs:
         command: 'restore'
-        projects: '**/*.csproj'
+        restoreSolution: '**/*.sln'
+        feedsToUse: 'select'
  
     - task: DotNetCoreCLI@2
       displayName: 'Build the project - $(buildConfiguration)'
